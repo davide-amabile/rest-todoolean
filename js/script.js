@@ -25,7 +25,7 @@ $("#btn").click(function(){
       "url":  "http://157.230.17.132:3003/todos",
        "method": "POST",
        "data": {
-         "text": newElement,
+        "text": newElement,
        },
        "success": function (data) {
        addElement(data);
@@ -39,6 +39,33 @@ $("#btn").click(function(){
   // fine chiamata ajax per aggiungere
 });
 
+// rimuovere elemento dal video  e dall api
+$("#list-to-do").on("click", ".lista", function(){
+   var elemento =$(this);
+   var attribute =elemento.attr("data-id");
+
+  // eliminare dall api
+  $.ajax(
+    {
+      "url":  "http://157.230.17.132:3003/todos/"+attribute,
+      "method": "DELETE",
+      "success": function (data) {
+      elemento.remove();
+
+    },
+      "error": function () {
+       alert("E' avvenuto un errore. " );
+    }
+
+    }
+  );
+
+});
+
+// modificare l api
+$(document).on("click", ".change", function(){
+  
+});
 
 
 // fine ajax per aggiungere
@@ -51,7 +78,8 @@ function renderList(data){
 
   for (i=0; i<data.length; i++){
     var context = {
-    "text": data[i].text
+    "text": data[i].text,
+    "id": data[i].id
   };
   var html = template(context);
   $("#list-to-do").append(html);
@@ -66,7 +94,8 @@ function addElement(data){
   var template = Handlebars.compile(source);
 
   var context = {
-  "text": data.text
+  "text": data.text,
+  "id": data.id
   }
   var html = template(context);
   $("#list-to-do").append(html);
