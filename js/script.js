@@ -24,7 +24,11 @@ function renderList(data){
   var template = Handlebars.compile(source);
 
   for (i=0; i<=data.length; i++){
-    console.log(data[i].text);
+    var context = {
+    "text": data[i].text
+  };
+  var html = template(context);
+  $("#list-template").append(html);
   }
-    // console.log(data[i].text);
+
 }
