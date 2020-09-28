@@ -6,7 +6,7 @@ $(document).ready(function(){
       "method": "GET",
       "success": function (data) {
      // invoco funzione per il template
-      console.log(data);
+      // stampa lista
       renderList(data);
 
     },
@@ -23,12 +23,12 @@ function renderList(data){
   var source = $("#list-template").html();
   var template = Handlebars.compile(source);
 
-  for (i=0; i<=data.length; i++){
+  for (i=0; i<data.length; i++){
     var context = {
     "text": data[i].text
   };
   var html = template(context);
-  $("#list-template").append(html);
+  $("#list-to-do").append(html);
   }
 
 }
