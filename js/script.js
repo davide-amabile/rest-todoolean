@@ -67,9 +67,9 @@ function addElement(data){
 
   var context = {
   "text": data.text
-}
-var html = template(context);
-$("#list-to-do").append(html);
+  }
+  var html = template(context);
+  $("#list-to-do").append(html);
 
 }
 // fine funzione
