@@ -62,12 +62,6 @@ $("#list-to-do").on("click", ".lista", function(){
 
 });
 
-// modificare l api
-$(document).on("click", ".change", function(){
-  
-});
-
-
 // fine ajax per aggiungere
 });
 
